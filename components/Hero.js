@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Truck, Banknote, RotateCcw, ShieldCheck } from "lucide-react";
@@ -10,25 +11,20 @@ import "swiper/css/pagination";
 const banners = [
   {
     image: "ban-1.png",
-    // title: "Uniforms, Bags & Shoes: 40% Off!",
-    // button: "Shop Now",
   },
   {
     image: "ban-2.png",
-    // title: "Everything Your School Needs",
-    // button: "Explore Products",
   },
   {
     image: "ban-3.png",
-    // title: "Back to School Sale!",
-    // button: "Shop Now",
   },
 ];
 
 export default function Hero() {
   return (
-    <section className="mx-auto grid max-w-[1340px] gap-6 px-4 py-6 lg:grid-cols-[2fr_1fr]">
-      <div className="overflow-hidden rounded-2xl">
+    <section className="mx-auto grid w-full max-w-[1340px] grid-cols-1 gap-4 px-3 py-4 sm:gap-5 sm:px-5 sm:py-6 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)] lg:gap-6">
+      {/* Banner Slider */}
+      <div className="min-w-0 overflow-hidden rounded-xl sm:rounded-2xl">
         <Swiper
           modules={[Autoplay, Pagination]}
           slidesPerView={1}
@@ -38,89 +34,79 @@ export default function Hero() {
             disableOnInteraction: false,
           }}
           pagination={{ clickable: true }}
-          className="school-banner"
+          className="school-banner w-full"
         >
           {banners.map((banner) => (
             <SwiperSlide key={banner.image}>
               <div
-                className="flex min-h-75 flex-col items-start justify-center bg-cover bg-center px-6 py-10 md:min-h-[360px] md:px-10"
+                className="h-[190px] w-full bg-cover bg-center bg-no-repeat xs:h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px]"
                 style={{
-                  backgroundImage: `url('${banner.image}')`,
+                  backgroundImage: `url('/${banner.image}')`,
                 }}
-              >
-                {banner.title && (
-                  <h1 className="max-w-lg text-3xl font-extrabold text-blue-900 md:text-5xl">
-                    {banner.title}
-                  </h1>
-                )}
-
-                {banner.button && (
-                  <a
-                    href="#products"
-                    className="mt-6 rounded-full bg-blue-600 px-5 py-3 font-bold text-white"
-                  >
-                    {banner.button}
-                  </a>
-                )}
-
-                {banner.cod && (
-                  <p className="mt-8 text-sm font-semibold text-gray-500">
-                    COD Available
-                  </p>
-                )}
-              </div>
+                role="img"
+                aria-label="School shopping promotional banner"
+              />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      <div className="flex flex-col justify-center rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
-        <p className="text-sm font-medium text-blue-600">
+      {/* Hero Content */}
+      <div className="flex min-w-0 flex-col justify-center rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:rounded-2xl sm:p-6 md:p-8 lg:p-6 xl:p-8">
+        <p className="text-xs font-semibold tracking-wide text-blue-600 sm:text-sm">
           SCHOOL SHOPPING, MADE SIMPLE
         </p>
 
-        <h2 className="mt-2 text-3xl font-extrabold leading-tight text-slate-900">
-          Everything your <span className="text-orange-500">school</span> needs
+        <h2 className="mt-2 text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl">
+          Everything your{" "}
+          <span className="text-orange-500">school</span> needs
         </h2>
 
-        <p className="mt-3 leading-6 text-gray-600">
+        <p className="mt-3 text-sm leading-6 text-gray-600 sm:text-base">
           Quality uniforms, textbooks and stationery from verified sellers.
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-3">
+        {/* Action Buttons */}
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
             href="#products"
-            className="rounded-xl bg-orange-500 px-5 py-3 font-semibold text-white hover:bg-orange-600"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-orange-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-orange-600 sm:px-5 sm:text-base"
           >
-            Find Your School　›
+            Find Your School <span className="ml-2">›</span>
           </a>
-          <button className="rounded-xl border px-4 py-3 font-semibold">
+
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-gray-50 sm:px-5 sm:text-base"
+          >
             Become a Seller
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 text-sm text-gray-600 mt-3">
-          <p className="flex items-center gap-2">
-            <Truck size={18} className="text-blue-600" />
-            Same-day delivery
+        {/* Benefits */}
+        <div className="mt-5 grid grid-cols-1 gap-3 text-sm text-gray-600 min-[380px]:grid-cols-2 sm:gap-4 lg:gap-3">
+          <p className="flex min-w-0 items-center gap-2">
+            <Truck size={19} className="shrink-0 text-blue-600" />
+            <span>Same-day delivery</span>
           </p>
 
-          <p className="flex items-center gap-2">
-            <Banknote size={18} className="text-green-600" />
-            Cash on Delivery
+          <p className="flex min-w-0 items-center gap-2">
+            <Banknote size={19} className="shrink-0 text-green-600" />
+            <span>Cash on Delivery</span>
           </p>
 
-          <p className="flex items-center gap-2">
-            <RotateCcw size={18} className="text-orange-500" />
-            7-day returns
+          <p className="flex min-w-0 items-center gap-2">
+            <RotateCcw size={19} className="shrink-0 text-orange-500" />
+            <span>7-day returns</span>
           </p>
 
-          <p className="flex items-center gap-2">
-            <ShieldCheck size={18} className="text-purple-600" />
-            Genuine uniforms
+          <p className="flex min-w-0 items-center gap-2">
+            <ShieldCheck size={19} className="shrink-0 text-purple-600" />
+            <span>Genuine uniforms</span>
           </p>
         </div>
       </div>
     </section>
   );
 }
+
