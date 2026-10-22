@@ -34,7 +34,7 @@ export default function Navbar() {
     <header className="bg-white">
       <div className="bg-[#203e87] text-white text-sm">
         <div className="mx-auto flex max-w-[1340px] flex-wrap justify-between gap-2 px-4 py-3">
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <Phone size={15} /> +91 88628 97001 <MapPin size={15} /> Patna
             (Change)
           </div>
@@ -42,7 +42,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[1340px] flex-wrap items-center gap-4 border-b px-4 py-5">
+      <div className="mx-auto flex w-full max-w-[1340px] flex-wrap items-center justify-between gap-6 border-b border-gray-200 px-4 py-4 text-sm font-medium text-slate-700">
         <a href="/" className="text-xl font-extrabold text-orange-500">
           🎒 SchoolKart
         </a>
@@ -85,18 +85,20 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className="mx-auto flex max-w-[1340px] flex-wrap gap-x-10 gap-y-4 border-b px-4 py-5">
-        {categories.map(([icon, name]) => (
-          <a
-            key={name}
-            href="#products"
-            className="flex items-center gap-2 text-gray-700 hover:text-blue-600"
-          >
-            <span>{icon}</span>
-            {name}
-          </a>
-        ))}
-      </nav>
+      <nav className="w-full border-b border-gray-200 bg-white">
+  <div className="mx-auto flex w-full max-w-[1340px] flex-wrap items-center gap-x-10 gap-y-4 px-4 py-5">
+    {categories.map(([icon, name]) => (
+      <a
+        key={name}
+        href="#products"
+        className="flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-blue-600"
+      >
+        <span>{icon}</span>
+        {name}
+      </a>
+    ))}
+  </div>
+</nav>
     </header>
   );
 }

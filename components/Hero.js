@@ -1,29 +1,77 @@
+"use client";
+
+import { Truck, Banknote, RotateCcw, ShieldCheck } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+const banners = [
+  {
+    image: "ban-1.png",
+    // title: "Uniforms, Bags & Shoes: 40% Off!",
+    // button: "Shop Now",
+  },
+  {
+    image: "ban-2.png",
+    // title: "Everything Your School Needs",
+    // button: "Explore Products",
+  },
+  {
+    image: "ban-3.png",
+    // title: "Back to School Sale!",
+    // button: "Shop Now",
+  },
+];
 
 export default function Hero() {
   return (
     <section className="mx-auto grid max-w-[1340px] gap-6 px-4 py-6 lg:grid-cols-[2fr_1fr]">
-      <div className="flex min-h-[300px] flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-[#203e87] px-5 py-10 text-center text-white md:min-h-[350px]">
-        <div className="mb-8 flex w-full justify-around text-3xl">
-          <span>🎒</span>
-          <span>📚</span>
-          <span>✏️</span>
-          <span>🎒</span>
-          <span>📚</span>
-          <span>✏️</span>
-        </div>
-
-        <h1 className="text-3xl font-extrabold md:text-4xl lg:text-5xl">
-          Uniforms, Bags & Shoes: 40% Off!
-        </h1>
-
-        <a
-          href="#products"
-          className="mt-7 rounded-full bg-yellow-400 px-7 py-3 font-bold text-blue-950 hover:bg-yellow-300"
+      <div className="overflow-hidden rounded-2xl">
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          className="school-banner"
         >
-          Shop at schoolkart.in →
-        </a>
+          {banners.map((banner) => (
+            <SwiperSlide key={banner.image}>
+              <div
+                className="flex min-h-75 flex-col items-start justify-center bg-cover bg-center px-6 py-10 md:min-h-[360px] md:px-10"
+                style={{
+                  backgroundImage: `url('${banner.image}')`,
+                }}
+              >
+                {banner.title && (
+                  <h1 className="max-w-lg text-3xl font-extrabold text-blue-900 md:text-5xl">
+                    {banner.title}
+                  </h1>
+                )}
 
-        <p className="mt-12 text-sm font-semibold">COD Available</p>
+                {banner.button && (
+                  <a
+                    href="#products"
+                    className="mt-6 rounded-full bg-blue-600 px-5 py-3 font-bold text-white"
+                  >
+                    {banner.button}
+                  </a>
+                )}
+
+                {banner.cod && (
+                  <p className="mt-8 text-sm font-semibold text-gray-500">
+                    COD Available
+                  </p>
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       <div className="flex flex-col justify-center rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
@@ -51,11 +99,26 @@ export default function Hero() {
           </button>
         </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-3 border-t pt-5 text-sm text-gray-600">
-          <p>🚚 Same-day delivery</p>
-          <p>✓ Cash on Delivery</p>
-          <p>♙ 7-day returns</p>
-          <p>♧ Genuine uniforms</p>
+        <div className="grid grid-cols-2 gap-3 text-sm text-gray-600 mt-3">
+          <p className="flex items-center gap-2">
+            <Truck size={18} className="text-blue-600" />
+            Same-day delivery
+          </p>
+
+          <p className="flex items-center gap-2">
+            <Banknote size={18} className="text-green-600" />
+            Cash on Delivery
+          </p>
+
+          <p className="flex items-center gap-2">
+            <RotateCcw size={18} className="text-orange-500" />
+            7-day returns
+          </p>
+
+          <p className="flex items-center gap-2">
+            <ShieldCheck size={18} className="text-purple-600" />
+            Genuine uniforms
+          </p>
         </div>
       </div>
     </section>

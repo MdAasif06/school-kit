@@ -28,3 +28,21 @@ button {
 a {
   text-decoration: none;
 }
+
+.school-banner .swiper-pagination {
+  position: static;
+  padding: 10px 0 2px;
+}
+
+.school-banner .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: #cbd5e1;
+  opacity: 1;
+}
+
+.school-banner .swiper-pagination-bullet-active {
+  width: 22px;
+  border-radius: 10px;
+  background: #2563eb;
+}
